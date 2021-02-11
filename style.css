@@ -425,7 +425,7 @@ body {
 }
 
 .jocoding {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 p {
     font-size: 12px;
@@ -437,6 +437,12 @@ p {
 }
 
 .ad-banner1 {
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+.ad-banner2 {
   width: 320px;
   margin: 0 auto;
   margin-top: 20px;
