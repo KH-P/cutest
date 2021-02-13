@@ -1,4 +1,4 @@
-function showClock() {
+function showClock(){
     var currentDate = new Date();
     var divClock = document.getElementById('divClock');
     var msg;
@@ -10,5 +10,5 @@ function showClock() {
 
     divClock.innerText = msg;
 
-    setTimeout(showClock, 1000);
+    setTimeout(showClock, 1000);    
 }

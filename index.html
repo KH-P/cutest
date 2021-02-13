@@ -17,8 +17,18 @@
         />
         <link rel="stylesheet" href="css/swiper.min.css" />
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60256c57b07afcd3"></script>
-
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60256c57b07afcd3"
+        ></script>
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+        <script src="js/swiper.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/face-api.min.js"></script>
+        <script src="js/my.js"></script>
     </head>
     <body onload="showClock()">
         <div class="top">
@@ -41,7 +51,11 @@
                         >
                     </li>
                     <li><a class="dropdown-item" href="https://bestgift.gq">선물 추천 AI</a></li>
-                    <li><a class="dropdown-item" href="https://animalface.site/ko/index.html">동물상 테스트 by 조코딩</a></li>
+                    <li>
+                        <a class="dropdown-item" href="https://animalface.site/ko/index.html"
+                            >동물상 테스트 by 조코딩</a
+                        >
+                    </li>
                 </ul>
             </div>
         </div>
@@ -75,7 +89,7 @@
             </div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" id='slide-example'>
+                    <div class="swiper-slide" id="slide-example">
                         <div class="marker-best">BEST</div>
                         <div class="slide-squre"></div>
                         <div class="slide-circle"></div>
@@ -87,7 +101,7 @@
                         <div class="text-gender">여</div>
                         <div class="text-gender2">성별</div>
                     </div>
-                    <div class="swiper-slide" id='slide-example'>
+                    <div class="swiper-slide" id="slide-example">
                         <div class="slide-squre"></div>
                         <div class="slide-circle"></div>
                         <div class="slide-face"><img src="img/example_boy.png" /></div>
@@ -103,18 +117,59 @@
         </section>
 
         <section class="section">
-            <div class="subtitle">함께 나온 사진을 선택 해보세요.</div>
+            <div class="subtitle">혼자 또는 함께 나온 사진을 선택 해보세요.</div>
             <div class="world">
                 <div class="phone">
                     <div class="screen">
-                        <h1 id="divClock" class="text-time"></h1>
-                        <h1 class="text-upload">이미지 업로드</h1>
+                        <div class="image-upload-wrap">
+                            <input
+                                class="file-upload-input"
+                                type="file"
+                                onchange="readURL(this);"
+                                accept="image/*"
+                            />
+                            <h1 id="divClock" class="text-time"></h1>
+                            <h1 class="text-upload">이미지 업로드</h1>
+                        </div>
+                        <div class="file-upload-content">
+                            <img
+                                class="file-upload-image"
+                                id="face-image"
+                                src="#"
+                                alt="your image"
+                            />
+                            <div class="pt-3 file-upload-retry">
+                                <button
+                                    type="button p-2"
+                                    class="try-again-btn"
+                                    onclick="window.location.reload();"
+                                >
+                                    <span class="try-again-text">다시하기</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="speaker"></div>
+                    <div id="loading" class="animated bounce">
+                        <p class="text-loading">귀요미 수치를 분석중입니다.</p>
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <p class="result-message"></p>
                 </div>
             </div>
             <h1 class="text-warning2">※ 사진은 저장되지 않습니다.</h1>
         </section>
+
+        <!--
+        <section class="section">
+            <div class="subtitle tip">★ 귀요미 수치 올리는 TIP</div>
+            <div class="tip-div">
+                <h3>1. 동안 표정을 지어본다.</h3>                
+            </div>
+        </section>
+        -->
 
         <section class="section ad-banner1">
             <ins
@@ -130,21 +185,21 @@
                 async
             ></script>
         </section>
-        
+
         <section class="section jocoding">
             <center>
-            <iframe
-                width="320"
-                height="180"
-                src="https://www.youtube.com/embed/s6SITKSN9Q0"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen=""
-            ></iframe>
-            <p>제작 도움: 유튜브 조코딩 채널</p>
+                <iframe
+                    width="320"
+                    height="180"
+                    src="https://www.youtube.com/embed/s6SITKSN9Q0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""
+                ></iframe>
+                <p>제작 도움: 유튜브 조코딩 채널</p>
             </center>
         </section>
-        
+
         <section class="section ad-banner2">
             <ins
                 class="kakao_ad_area"
@@ -161,65 +216,53 @@
         </section>
 
         <!--<a href="https://goldeye15.tistory.com" target="_blank" id="coolors">공유하기 ></a>-->
-        
+
         <footer class="footer pt-1 container d-flex justify-content-center">
             <div>
                 문의메일 : goldeye15@naver.com
                 <p>&copy; 바코 BACO 2021. All Rights Reserved.</p>
             </div>
         </footer>
-        
 
-        <script
-            class="jsbin"
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
-        ></script>
-        <script src="js/my.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-            crossorigin="anonymous"
-        ></script>
-        <script src="js/swiper.min.js"></script>
-        <!-- Initialize Swiper -->
         <script>
-            var slider;
-            var people = 2;
-            for (let i = 0; i < people; i++) {
-                if(i==0) {
-                    slider = 
-                    "<div class='swiper-slide' id='slide-example'> " +
-                        "<div class='marker-best'>BEST</div>" +
-                        "<div class='slide-squre'></div>" +
-                        "<div class='slide-circle'></div>" +
-                        "<div class='slide-face'><img src='img/example_girl.png' /></div>" +
-                        "<div class='slide-bar'></div>" +
-                        "<div class='text-name'>영희</div>" +
-                        "<div class='text-score'>95%</div>" +
-                        "<div class='text-score2'>귀요미 수치</div>" +
-                        "<div class='text-gender'>여</div>" +
-                        "<div class='text-gender2'>성별</div>" +
-                    "</div>";
-                }
-                else if(i==1) {
-                    slider +=
-                    "<div class='swiper-slide' id='slide-example'> " +
-                        "<div class='slide-squre'></div>" +
-                        "<div class='slide-circle'></div>" +
-                        "<div class='slide-face'><img src='img/example_boy.png' /></div>" +
-                        "<div class='slide-bar'></div>" +
-                        "<div class='text-name'>철수</div>" +
-                        "<div class='text-score'>92%</div>" +
-                        "<div class='text-score2'>귀요미 수치</div>" +
-                        "<div class='text-gender'>남</div>" +
-                        "<div class='text-gender2'>성별</div>" +
-                    "</div>";                    
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.image-upload-wrap').hide();
+                        $('#loading').show();
+                        $('.file-upload-image').attr('src', e.target.result);
+                        $('.file-upload-content').show();
+                        $('.image-title').html(input.files[0].name);
+                        console.log('hello');
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                    init().then(function () {
+                        console.log('hello');
+                        recommand();
+                        $('#loading').hide();
+                    });
+                } else {
+                    removeUpload();
                 }
             }
-            //$('.swiper-wrapper').append(slider);
+
+            function removeUpload() {
+                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+                $('.file-upload-content').hide();
+                $('.image-upload-wrap').show();
+            }
+            $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+            });
+        </script>
+        <script>
             var w = window.innerWidth;
             var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 1.5,
+                slidesPerView: 0,
                 spaceBetween: 12,
                 slidesOffsetBefore: w / 10,
                 freeMode: true,
@@ -228,7 +271,19 @@
                     clickable: true,
                 },
             });
-            //$('[id="slide-example"]').hide();
         </script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"
+        ></script>
     </body>
+    <!-- 
+    image input box
+    Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    -->
 </html>
