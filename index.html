@@ -25,12 +25,10 @@
             class="jsbin"
             src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
         ></script>
-        <script src="js/swiper.min.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/face-api.min.js"></script>
         <script src="js/my.js"></script>
+        <script src="js/swiper.min.js"></script>
     </head>
-    <body onload="showClock()">
+    <body>
         <div class="top">
             <div class="text-top">CUTEST</div>
             <div class="dropdown" style="float: right;">
@@ -118,6 +116,7 @@
 
         <section class="section">
             <div class="subtitle">혼자 또는 함께 나온 사진을 선택 해보세요.</div>
+
             <div class="world">
                 <div class="phone">
                     <div class="screen">
@@ -129,7 +128,15 @@
                                 accept="image/*"
                             />
                             <h1 id="divClock" class="text-time"></h1>
-                            <h1 class="text-upload">이미지 업로드</h1>
+                            <h1 class="text-upload">
+                                <div class="upload-camera">
+                                <i class="fas fa-camera-retro"></i>
+                                </div>이미지 업로드</h1>
+                            <div class="image-point">
+                                    <div class="circle2 first"></div>
+    <div class="circle2 second"></div>
+                                <i class="fas fa-hand-point-up"></i>
+                            </div>
                         </div>
                         <div class="file-upload-content">
                             <img
@@ -160,16 +167,33 @@
                 </div>
             </div>
             <h1 class="text-warning2">※ 사진은 저장되지 않습니다.</h1>
-        </section>
 
-        <!--
-        <section class="section">
-            <div class="subtitle tip">★ 귀요미 수치 올리는 TIP</div>
-            <div class="tip-div">
-                <h3>1. 동안 표정을 지어본다.</h3>                
+            <div class="legend-all">
+                <div class="legend">
+                    <p>100%</p>
+                    <div class="legend-bar">
+                        <h1>90%</h1>
+                        <h2>갓귀요미</h2>
+                    </div>
+                    <div class="legend-bar">
+                        <h1>80%</h1>
+                        <h2>핵귀요미</h2>
+                    </div>
+                    <div class="legend-bar">
+                        <h1>70%</h1>
+                        <h2>귀요미</h2>
+                    </div>
+                    <div class="legend-bar">
+                        <h1>50%</h1>
+                        <h2>덜귀요미</h2>
+                    </div>
+                    <div class="legend-bar">
+                        <h1>0%</h1>
+                        <h2>어르신</h2>
+                    </div>
+                </div>
             </div>
         </section>
-        -->
 
         <section class="section ad-banner1">
             <ins
@@ -278,6 +302,9 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"
         ></script>
+        <script src="js/app.js"></script>
+        <script src="js/face-api.min.js"></script>
+        
     </body>
     <!-- 
     image input box

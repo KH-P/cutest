@@ -355,9 +355,54 @@ body {
 
 .text-upload {
     position: relative;
-    top: 80px;
+    top: 52px;
     font-size: 1rem;
     color: #ffffff;
+}
+
+.upload-camera {
+    font-size: 26px;    
+}
+
+.image-point {
+    color: #ffffff;
+    font-size: 24px;
+    text-shadow: -1px 0 #A4A4A4, 0 1px #A4A4A4, 1px 0 #A4A4A4, 0 -1px #A4A4A4;
+    position: absolute;
+    right: 30px;
+    bottom: 84px;
+    transform: rotate(-12deg);
+    
+}
+
+.circle2 {
+  width: 30px;
+  height: 20px;
+  position: absolute;
+    right: -4px;
+    top: -4px;
+  border: 3px solid #fa5858;
+  border-radius: 80%;
+  border-color: transparent #fa5858;
+  animation: ring 2s infinite linear both;
+}
+
+.second {
+  animation-delay: .5s;
+}
+
+@keyframes ring{
+  0%, 100% {
+    opacity: 0;
+  }
+  
+  1% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .speaker {
@@ -459,6 +504,99 @@ body {
     padding: 4px 15px;
 }
 
+.legend-all {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    
+}
+
+.legend {
+    position: absolute;
+    left: 16%;
+    bottom: 80px;
+    width: 10px;
+    height: 200px;
+}
+
+.legend > p {
+    position: absolute;
+    left: 10px;
+    top: -6px;
+    font-size: 10px;
+}
+
+.legend-bar {
+    position: relative;
+    border: solid 1px #ffffff;
+    width: 10px;
+}
+.legend-bar > h1 {
+    position: absolute;
+    font-size: 10px;
+    left: 10px;
+}
+.legend-bar:nth-of-type(1) {
+    height: 10%;
+    background: #fa5858;
+}
+.legend-bar:nth-of-type(1) > h1 {
+    top: 12px;
+}
+.legend-bar:nth-of-type(2) {
+    height: 10%;
+    background: #FE9A2E;  
+}
+.legend-bar:nth-of-type(2) > h1 {
+    top: 12px;
+}
+.legend-bar:nth-of-type(3) {
+    height: 20%;
+    background: #2EFE2E;  
+}
+.legend-bar:nth-of-type(3) > h1 {
+    top: 32px;
+}
+.legend-bar:nth-of-type(4) {
+    height: 20%;
+    background: #5858FA;  
+}
+.legend-bar:nth-of-type(4) > h1 {
+    top: 30px;
+}
+.legend-bar:nth-of-type(5) {
+    height: 40%;
+    background: #BDBDBD;  
+}
+.legend-bar:nth-of-type(5) > h1 {
+    top: 72px;
+}
+.legend-bar > h2 {
+    width: 40px !important;
+    position: absolute;
+    font-size: 10px;
+    right: 8px;
+}
+.legend-bar:nth-of-type(1) > h2 {
+    top: 4px;
+}
+.legend-bar:nth-of-type(2) > h2 {
+    top: 4px;
+}
+.legend-bar:nth-of-type(3) > h2 {
+    top: 12px;
+    right: 2px;
+}
+.legend-bar:nth-of-type(4) > h2 {
+    top: 12px;
+}
+.legend-bar:nth-of-type(5) > h2 {
+    top: 30px;
+    right: 2px;
+}
+
+
+
 #coolors {
     position: fixed;
     bottom: 20px;
@@ -544,7 +682,7 @@ p {
 .ad-banner1 {
   width: 320px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 120px;
 }
 
 .ad-banner2 {

@@ -94,6 +94,13 @@ async function init() {
 
             if (key == 0) best = "<div class='marker-best'>BEST</div>";
             else best = '';
+            
+            var p_cute_color;
+            if(arr[key].cute >= 90) p_cute_color = "#fa5858";
+            else if(arr[key].cute >= 80) p_cute_color = "#FE9A2E";
+            else if(arr[key].cute >= 60) p_cute_color = "#2EFE2E";
+            else if(arr[key].cute >= 40) p_cute_color = "#5858FA";
+            else p_cute_color = "#BDBDBD";
 
             var html_face =
                 "<div class='swiper-slide'>" +
@@ -105,7 +112,7 @@ async function init() {
                 "<div class='text-name'>" +
                 p_name +
                 '</div>' +
-                "<div class='text-score'>" + arr[key].cute + "%</div>" +
+                "<div class='text-score' style='color:" + p_cute_color + "'>" + arr[key].cute + "%</div>" +
                 "<div class='text-score2'>귀요미 수치</div>" +
                 "<div class='text-gender'>" +
                 k_gender +
