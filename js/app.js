@@ -8,12 +8,12 @@ var ck_error;
 var arr = [];
 
 async function init() {
+    const image = document.querySelector('#face-image');
     await faceapi.nets.ssdMobilenetv1.loadFromUri('./models');
     await faceapi.nets.faceExpressionNet.loadFromUri('./models');
     await faceapi.nets.ageGenderNet.loadFromUri('./models');
     //await faceapi.nets.faceLandmark68Net.loadFromUri('./models');
     //await faceapi.nets.tinyFaceDetector.loadFromUri('./models');
-    const image = document.querySelector('#face-image');
     const detection = await faceapi
         //.detectSingleFace(image)
         .detectAllFaces(image)
@@ -73,7 +73,7 @@ async function init() {
             console.log('나이 : ' + detection[0].age);
             var i = arr[key].idx;
             p_gender = detection[i].gender;
-            xy_offset = 10;
+            xy_offset = 50;
             face_x = detection[i].detection.box._x - xy_offset;
             face_y = detection[i].detection.box._y - xy_offset;
             face_width = detection[i].detection.box._width + xy_offset * 2;
