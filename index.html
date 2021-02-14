@@ -48,8 +48,6 @@
         <script src="js/swiper.min.js"></script>
         <script src="js/face-api.min.js"></script>
         <script src="js/app.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
 
         <title>귀요미 테스트</title>
         <meta name="title" content="귀요미 테스트" />
@@ -325,7 +323,7 @@
             function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onloadend = function (e) {
                         $('.image-upload-wrap').hide();
                         $('#loading').show();
                         $('.file-upload-image').attr('src', e.target.result);
@@ -374,6 +372,8 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"
         ></script>
+        
+        
     </body>
     <!-- 
     image input box
