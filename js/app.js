@@ -12,22 +12,21 @@ async function init() {
     console.log('model_bef');
     const image = document.querySelector('#face-image');
     
-    
     //await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
     //await faceapi.nets.faceExpressionNet.loadFromUri('models');
     //await faceapi.nets.ageGenderNet.loadFromUri('models');
     //await faceapi.nets.ssdMobilenetv1.load('models/ssd_mobilenetv1_model-weights_manifest.json');
+    //await faceapi.nets.faceExpressionNet.load('models/face_expression_model-weights_manifest.json');
     //await faceapi.nets.TinyFaceDetector.load('models/tiny_face_detector_model-weights_manifest.json');
-    await faceapi.loadTinyFaceDetectorModel('models')
+    await faceapi.loadTinyFaceDetectorModel('models');
     await faceapi.nets.ageGenderNet.load('models/age_gender_model-weights_manifest.json');
-    await faceapi.nets.faceExpressionNet.load('models/face_expression_model-weights_manifest.json');
     
-    const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })
+    const options = new faceapi.TinyFaceDetectorOptions();
     
     console.log('model_aft');
     const detection = await faceapi
         .detectAllFaces(image, options)
-        .withFaceExpressions()
+        //.withFaceExpressions()
         .withAgeAndGender();
     console.log('detect_end');
     /*
@@ -43,6 +42,7 @@ async function init() {
     } else {
         console.log('face_start');
         for (let i = 0; i < detection.length; i++) {
+            /*
             expresss = Object.keys(detection[i].expressions);
             let max_probab = 0;
             for (let j = 0; j < expresss.length; j++) {
@@ -54,7 +54,8 @@ async function init() {
                 }
             }
             p_happy = parseFloat(detection[i].expressions[expresss[1]]).toFixed(2);
-            p_angry = parseFloat(detection[i].expressions[expresss[3]]).toFixed(2);
+            p_angry = parseFloat(detection[i].expressions[expresss[3]]).toFixed(2);  
+            */
             
             a_x = parseFloat(detection[i].age).toFixed(0);
             p_age = parseFloat((1 / 600) * a_x * a_x + (13 / 12) * a_x - 1).toFixed(0);
@@ -62,8 +63,8 @@ async function init() {
             if(detection[i].gender == "female") p_gen_bonus = 1.08;
             else p_gen_bonus = 1;
                       
-            p_cute = parseFloat((100 - p_age + (p_happy - p_angry)*20) * p_gen_bonus / 120 * 100).toFixed(0);
-            //p_cute = parseFloat((100 - p_age) * p_gen_bonus / 110 * 100).toFixed(0);
+            //p_cute = parseFloat((100 - p_age + (p_happy - p_angry)*20) * p_gen_bonus / 120 * 100).toFixed(0);
+            p_cute = parseFloat((100 - p_age) * p_gen_bonus / 110 * 100).toFixed(0);
             
             arr.push({ idx: i, cute: p_cute });
             
