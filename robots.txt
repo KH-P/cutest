@@ -1,0 +1,3 @@
+User-agent: *
+Allow:/
+Sitemap: https://q-test.shop/sitemap.xml
