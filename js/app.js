@@ -21,7 +21,7 @@ async function init() {
     await faceapi.loadTinyFaceDetectorModel('models');
     await faceapi.nets.ageGenderNet.load('models/age_gender_model-weights_manifest.json');
     
-    const options = new faceapi.TinyFaceDetectorOptions();
+    const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 608 });
     
     console.log('model_aft');
     const detection = await faceapi
