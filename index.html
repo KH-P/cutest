@@ -41,9 +41,15 @@
             class="jsbin"
             src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
         ></script>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+
         <script src="js/my.js"></script>
         <script src="js/swiper.min.js"></script>
-        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script src="js/face-api.min.js"></script>
+        <script src="js/app.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
 
         <title>귀요미 테스트</title>
         <meta name="title" content="귀요미 테스트" />
@@ -101,18 +107,10 @@
         <div class="title">
             <div class="box">
                 <img src="img/title.png" />
-                <h1>
-                    Cuteness Test
-                </h1>
-                <h2>
-                    <i class="fas fa-crown"></i>
-                </h2>
-                <h3>
-                    귀요미 테스트
-                </h3>
-                <h4>
-                    #세젤귀 #단체사진 #AI
-                </h4>
+                <h1>Cuteness Test</h1>
+                <h2><i class="fas fa-crown"></i></h2>
+                <h3>귀요미 테스트</h3>
+                <h4>#세젤귀 #단체사진 #AI</h4>
                 <div class="circle"></div>
                 <div class="circle"></div>
                 <div class="circle"></div>
@@ -333,7 +331,6 @@
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
                         $('.image-title').html(input.files[0].name);
-                        console.log('hello');
                     };
                     reader.readAsDataURL(input.files[0]);
                     init().then(function () {
@@ -377,8 +374,6 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"
         ></script>
-        <script src="js/app.js"></script>
-        <script src="js/face-api.min.js"></script>
     </body>
     <!-- 
     image input box

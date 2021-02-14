@@ -16,12 +16,10 @@ async function init() {
         .detectAllFaces(image)
         .withFaceExpressions()
         .withAgeAndGender();
-    /*
     console.log('test');
     console.log(detection);
     console.log(detection[0]);
     console.log(detection.length);
-    */
 
     if (detection.length == 0) {
         ck_error = 1;
@@ -32,7 +30,7 @@ async function init() {
             let max_probab = 0;
             for (let j = 0; j < expresss.length; j++) {
                 probab = parseFloat(detection[i].expressions[expresss[j]]).toFixed(2);
-                //console.log(expresss[j] + ' : ' + probab);
+                console.log(expresss[j] + ' : ' + probab);
                 if (max_probab < probab) {
                     max_probab = probab;
                     p_expression = expresss[j];

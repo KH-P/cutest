@@ -507,15 +507,15 @@ body {
 
 .legend-all {
     position: relative;
-    right: 0;
-    bottom: 0;
-    
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top: -180px;
+    padding-right: 242px;
 }
 
 .legend {
     position: absolute;
-    left: 16%;
-    bottom: 80px;
     width: 10px;
     height: 200px;
 }
