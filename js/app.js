@@ -18,10 +18,12 @@ async function init() {
     //await faceapi.nets.ssdMobilenetv1.load('models/ssd_mobilenetv1_model-weights_manifest.json');
     //await faceapi.nets.faceExpressionNet.load('models/face_expression_model-weights_manifest.json');
     //await faceapi.nets.TinyFaceDetector.load('models/tiny_face_detector_model-weights_manifest.json');
-    await faceapi.loadTinyFaceDetectorModel('models');
+    //await faceapi.loadTinyFaceDetectorModel('models');
+    await faceapi.loadSsdMobilenetv1Model('models')
     await faceapi.nets.ageGenderNet.load('models/age_gender_model-weights_manifest.json');
     
-    const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 608 });
+    //const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 1024 });
+    const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.4 });
     
     console.log('model_aft');
     const detection = await faceapi
