@@ -9,8 +9,16 @@ var arr = [];
 
 async function init(input) {
     console.log('start-init');
-
+    
+    console.log(sessionStorage.getItem("first"));
+    if(sessionStorage.length == 0) {
+        sessionStorage.setItem("first", 1 );
+        console.log('show');
+        $('.text-warning3').show();
+    }
+    
     const image = await faceapi.bufferToImage(input.files[0]);
+    $("#face-image").css('margin-top', (200 - document.querySelector('#face-image').height)/2);
     //console.log(image);
     
     /* resizing 
@@ -182,10 +190,10 @@ async function init(input) {
 
 async function recommand() {
     if (ck_error) {
-        var result_message = '귀요미 분석 실패!';
+        var result_message = '귀요미 분석 <font color=#fa5858>실패!</font>';
         $('.result-message').html(result_message);
     } else {
-        var result_message = '귀요미 분석 완료!';
+        var result_message = '귀요미 분석 <font color=#fa5858>완료!</font>';
         $('.result-message').html(result_message);
     }
 }
