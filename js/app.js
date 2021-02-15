@@ -55,11 +55,9 @@ async function init() {
     console.log(image);
     //console.log(dataurl);
     var img_resize = document.createElement("img");
-    $("html").append('<img src="' + dataurl + '" class="img-item">');
+    //$("html").append('<img src="' + dataurl + '" class="img-item">');
     img_resize.src = dataurl;
-    img_resize.alt = "test";
-    img_resize.id = "test-re";
-    console.log(img_resize);
+    //console.log(img_resize);
     
     console.time();
     //await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
