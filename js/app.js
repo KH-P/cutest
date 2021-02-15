@@ -17,18 +17,17 @@ async function init(input) {
         $('.text-warning3').show();
     }
     
-    const image = await faceapi.bufferToImage(input.files[0]);
-    $("#face-image").css('margin-top', (200 - document.querySelector('#face-image').height)/2);
+    //const image = await faceapi.bufferToImage(input.files[0]);
     //console.log(image);
     
-    /* resizing 
+    /* resizing */
     var img = document.createElement('img');
     img.src = await document.querySelector('#face-image').src;
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
-    var MAX_WIDTH = 500;
-    var MAX_HEIGHT = 500;
+    var MAX_WIDTH = 1000;
+    var MAX_HEIGHT = 1000;
     var width = img.width;
     var height = img.height;
     if (width > height) {
@@ -47,14 +46,15 @@ async function init(input) {
     var ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, width, height);
     dataurl = canvas.toDataURL('image/jpeg');
-    console.log(canvas);
-    console.log('model_bef');
-    const image = document.querySelector('#face-image');
+    //const image = document.querySelector('#face-image');
     var image = document.createElement('img');
     //$("html").append('<img src="' + dataurl + '" class="img-item">');
     image.src = dataurl;
-    */
+    
+    $("#face-image").css('margin-top', (200 - document.querySelector('#face-image').height)/2);
+    
 
+    console.log('model_bef');
     console.time();
     //await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
     //await faceapi.nets.faceExpressionNet.loadFromUri('models');
