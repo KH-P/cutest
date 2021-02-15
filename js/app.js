@@ -6,12 +6,62 @@ var p_name;
 var p_cute;
 var ck_error;
 var arr = [];
-var image;
 
-async function init() {
+async function init() {    
+    console.log('start-init');
+    
+    //console.log(await document.querySelector('#face-image').src);
+    //console.log(img_src);
+
+                        var img = document.createElement("img");
+                        img.src = await document.querySelector('#face-image').src;
+                        var w;
+                        var h;
+                        //img.onload = function () {
+                            //w = this.width;
+                            //h = this.height;
+                        var canvas = document.createElement("canvas");
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0);
+                        console.log(ctx);
+                        var MAX_WIDTH = 500;
+                        var MAX_HEIGHT = 500;
+                        var width = img.width;
+                        var height = img.height;
+                        console.log(width);
+                        if (width > height) {
+                            if (width > MAX_WIDTH) {
+                                height *= MAX_WIDTH / width;
+                                width = MAX_WIDTH;
+                            }
+                        } else {
+                            if (height > MAX_HEIGHT) {
+                                width *= MAX_HEIGHT / height;
+                                height = MAX_HEIGHT;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0, width, height);
+                        dataurl = canvas.toDataURL('image/jpeg');
+    //console.log(dataurl);
+    console.log(ctx);
+                        console.log(canvas);
+                        console.log(width);
+
     console.log('model_bef');
     const image = document.querySelector('#face-image');
+    console.log(image);
+    //console.log(dataurl);
+    var img_resize = document.createElement("img");
+    $("html").append('<img src="' + dataurl + '" class="img-item">');
+    img_resize.src = dataurl;
+    img_resize.alt = "test";
+    img_resize.id = "test-re";
+    console.log(img_resize);
     
+    console.time();
     //await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
     //await faceapi.nets.faceExpressionNet.loadFromUri('models');
     //await faceapi.nets.ageGenderNet.loadFromUri('models');
@@ -21,16 +71,22 @@ async function init() {
     //await faceapi.loadTinyFaceDetectorModel('models');
     await faceapi.loadSsdMobilenetv1Model('models')
     await faceapi.nets.ageGenderNet.load('models/age_gender_model-weights_manifest.json');
+    console.timeEnd();
     
-    //const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 1024 });
-    const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.4, inputSize:128 });
+    //const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 512, scoreThreshold: 0.3 });
+    //const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 160 });
+    //const options = new faceapi.SsdMobilenetv1Options();
+    const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.4 });
     
     console.log('model_aft');
+    console.log('detect_start');
+    console.time();
     const detection = await faceapi
-        .detectAllFaces(image, options)
+        .detectAllFaces(img_resize, options)
         //.withFaceExpressions()
         .withAgeAndGender();
     console.log('detect_end');
+    console.timeEnd();
     /*
     console.log('test');
     console.log(detection);
@@ -91,13 +147,13 @@ async function init() {
         for (var key in arr) {
             var i = arr[key].idx;
             p_gender = detection[i].gender;
-            xy_offset = 50;
+            xy_offset = 10;
             face_x = detection[i].detection.box._x - xy_offset;
             face_y = detection[i].detection.box._y - xy_offset;
             face_width = detection[i].detection.box._width + xy_offset * 2;
             face_height = detection[i].detection.box._height + xy_offset * 2;
             const regionsToExtract = [new faceapi.Rect(face_x, face_y, face_width, face_height)];
-            const face = await faceapi.extractFaces(image, regionsToExtract);
+            const face = await faceapi.extractFaces(img_resize, regionsToExtract);
 
             if (p_gender == 'male') {
                 nan = Math.floor(Math.random() * 100);
