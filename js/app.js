@@ -60,6 +60,7 @@ async function init() {
     //console.log(img_resize);
     
     console.time();
+    //console.log(tf.getBackend());
     //await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
     //await faceapi.nets.faceExpressionNet.loadFromUri('models');
     //await faceapi.nets.ageGenderNet.loadFromUri('models');
@@ -67,8 +68,11 @@ async function init() {
     //await faceapi.nets.faceExpressionNet.load('models/face_expression_model-weights_manifest.json');
     //await faceapi.nets.TinyFaceDetector.load('models/tiny_face_detector_model-weights_manifest.json');
     //await faceapi.loadTinyFaceDetectorModel('models');
-    await faceapi.loadSsdMobilenetv1Model('models')
-    await faceapi.nets.ageGenderNet.load('models/age_gender_model-weights_manifest.json');
+    //await faceapi.loadSsdMobilenetv1Model('https://cutest-potxw.run.goorm.io/cutest/models/ssd_mobilenetv1_model-weights_manifest.json')
+    //await faceapi.nets.ageGenderNet.load('https://cutest-potxw.run.goorm.io/cutest/models/age_gender_model-weights_manifest.json');
+    await faceapi.loadSsdMobilenetv1Model('models');
+    //await faceapi.nets.ssdMobilenetv1.loadFromDisk('weights');
+    await faceapi.nets.ageGenderNet.load('models');
     console.timeEnd();
     
     //const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 512, scoreThreshold: 0.3 });
