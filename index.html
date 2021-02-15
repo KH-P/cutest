@@ -332,7 +332,7 @@
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
                         $('.image-title').html(input.files[0].name);
-                        init().then(function () {
+                        init(input).then(function () {
                             console.log('init_start');
                             recommand();
                             console.log('recommand_end');
