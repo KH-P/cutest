@@ -1,3 +1,4 @@
 User-agent: *
 Allow:/
 Sitemap: https://q-test.shop/sitemap.xml
+#DaumWebMasterTool:bdd7ee6a8daecd2c00240dee0e573eeba3d68ad2b901cfb5a729746a88ecd497:xleJzJUR8PnD79lms7/u2Q==
